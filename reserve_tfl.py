@@ -117,7 +117,7 @@ class ReserveTFL():
 
         for month in self.driver.find_elements(By.CSS_SELECTOR, "div.ConsumerCalendar-month"):
             header = month.find_element(By.CSS_SELECTOR, "div.ConsumerCalendar-monthHeading")
-            span = header.find_element(By.CSS_SELECTOR, "span.H1")
+            span = header.find_element(By.CSS_SELECTOR, "span")
             print("Encountered month", span.text)
 
             if RESERVATION_MONTH in span.text:
@@ -130,7 +130,7 @@ class ReserveTFL():
             return False
 
         for day in month_object.find_elements(By.CSS_SELECTOR, "button.ConsumerCalendar-day.is-in-month.is-available"):
-            span = day.find_element(By.CSS_SELECTOR, "span.B2")
+            span = day.find_element(By.CSS_SELECTOR, "span")
             # print("Encountered day: " + span.text)
             if span.text in RESERVATION_DAYS:
                 print("Day %s found. Clicking button" % span.text)
